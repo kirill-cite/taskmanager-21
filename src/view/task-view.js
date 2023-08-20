@@ -1,12 +1,15 @@
 import {createElement} from '../render.js';
-import {humanizeTaskDueDate} from '../utils.js';
+import {humanizeTaskDueDate, isTaskExpired} from '../utils.js';
 
 function createTaskTemplate(task) {
   const {color, description, dueDate} = task;
 
   const date = humanizeTaskDueDate(dueDate);
+  const deadlineClassName = isTaskExpired(dueDate)
+    ? 'card--deadline'
+    : '';
 
-  return `<article class="card card--${color}">
+  return `<article class="card card--${color} ${deadlineClassName}">
             <div class="card__form">
               <div class="card__inner">
                 <div class="card__control">
