@@ -2,7 +2,7 @@ import AbstractView from '../framework/view/abstract-view';
 
 function createFilterTemplate() {
   return (
-    `<section class="main__filter filter container">
+    /*html*/`<section class="main__filter filter container">
       <input
         type="radio"
         id="filter__all"
