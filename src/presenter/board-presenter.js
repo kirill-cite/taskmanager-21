@@ -5,6 +5,7 @@ import TaskListView from '../view/task-list-view.js';
 import TaskView from '../view/task-view.js';
 import TaskEditView from '../view/task-edit-view.js';
 import LoadMoreButtonView from '../view/load-more-button-view.js';
+import NoTaskView from '../view/no-task-view.js';
 
 const TASK_COUNT_PER_STEP = 8;
 
@@ -78,6 +79,11 @@ export default class BoardPresenter {
     render(this.#boardComponent, this.#boardContainer);
     render(new SortView(), this.#boardComponent.element);
     render(this.#taskListComponent, this.#boardComponent.element);
+
+    if (this.#boardTasks.every((task) => task.isArchive)) {
+      render(new NoTaskView(), this.#boardComponent.element);
+      return;
+    }
 
     for (let i = 0; i < Math.min(this.#boardTasks.length, TASK_COUNT_PER_STEP); i++) {
       this.#renderTask(this.#boardTasks[i]);
