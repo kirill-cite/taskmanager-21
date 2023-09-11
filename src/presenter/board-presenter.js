@@ -43,7 +43,7 @@ export default class BoardPresenter {
 
   #renderSort() {
     render(this.#sortComponent, this.#boardComponent.element, RenderPosition.AFTERBEGIN);
-  };
+  }
 
   #renderTask(task) {
     const escKeyDownHandler = (evt) => {
