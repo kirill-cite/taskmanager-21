@@ -20,6 +20,7 @@ export default class BoardPresenter {
 
   #boardTasks = [];
   #renderedTaskCount = TASK_COUNT_PER_STEP;
+  #taskPresenters = new Map();
 
   constructor({boardContainer, tasksModel}) {
     this.#boardContainer = boardContainer;
@@ -49,12 +50,20 @@ export default class BoardPresenter {
       taskListContainer: this.#taskListComponent.element
     });
     taskPresenter.init(task);
+    this.#taskPresenters.set(task.id, taskPresenter);
   }
 
   #renderTasks(from, to) {
     this.#boardTasks
       .slice(from, to)
       .forEach((task) => this.#renderTask(task));
+  }
+
+  #clearTaskList() {
+    this.#taskPresenters.forEach((presenter) => presenter.destroy());
+    this.#taskPresenters.clear();
+    this.#renderedTaskCount = TASK_COUNT_PER_STEP;
+    remove(this.#loadMoreButtonComponent);
   }
 
   #renderNoTasks() {
