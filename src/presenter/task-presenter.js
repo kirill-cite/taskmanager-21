@@ -2,6 +2,11 @@ import { render, replace, remove } from '../framework/render.js';
 import TaskView from '../view/task-view.js';
 import TaskEditView from '../view/task-edit-view.js';
 
+const Mode = {
+  DEFAULT: 'DEFAULT',
+  EDITING: 'EDITING',
+};
+
 export default class TaskPresenter {
   #taskListContainer = null;
   #handleDataChange = null;
@@ -10,6 +15,7 @@ export default class TaskPresenter {
   #taskEditComponent = null;
 
   #task = null;
+  #mode = Mode.DEFAULT;
 
   constructor({taskListContainer, onDataChange}) {
     this.#taskListContainer = taskListContainer;
