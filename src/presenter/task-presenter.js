@@ -63,6 +63,12 @@ export default class TaskPresenter {
     remove(this.#taskEditComponent);
   }
 
+  resetView() {
+    if (this.#mode !== Mode.DEFAULT) {
+      this.#replaceFormToCard();
+    }
+  }
+
   #replaceCardToForm() {
     replace(this.#taskEditComponent, this.#taskComponent);
     document.addEventListener('keydown', this.#escKeyDownHandler);
