@@ -33,6 +33,8 @@ export default class BoardPresenter {
 
   init() {
     this.#boardTasks = [...this.#tasksModel.tasks];
+    //сохраняем исходное состояние массива
+    this.#sourcedBoardTasks = [...this.#tasksModel.tasks];
 
     this.#renderBoard();
   }
