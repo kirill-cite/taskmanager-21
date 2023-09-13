@@ -53,6 +53,7 @@ export default class BoardPresenter {
 
   #handleTaskChange = (updatedTask) => {
     this.#boardTasks = updateItem(this.#boardTasks, updatedTask);
+    this.#sourcedBoardTasks = updateItem(this.#sourcedBoardTasks, updatedTask);
     this.#taskPresenters.get(updatedTask.id).init(updatedTask);
   };
 
