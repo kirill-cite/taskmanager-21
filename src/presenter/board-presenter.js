@@ -57,6 +57,26 @@ export default class BoardPresenter {
     this.#taskPresenters.get(updatedTask.id).init(updatedTask);
   };
 
+  #sortTasks(sortType) {
+    // 2. Этот исходный массив задач необходим,
+    // потому что для сортировки мы будем мутировать
+    // массив в свойстве _boardTasks
+    switch (sortType) {
+      case SortType.DATE_UP:
+        this.#boardTasks.sort(sortTaskUp);
+        break;
+      case SortType.DATE_DOWN:
+        this.#boardTasks.sort(sortTaskDown);
+        break;
+      default:
+        // 3. А когда пользователь захочет "вернуть всё, как было",
+        // мы просто запишем в _boardTasks исходный массив
+        this.#boardTasks = [...this.#sourcedBoardTasks];
+    }
+
+    this.#currentSortType = sortType;
+  }
+
   #handleSortTypeChange = (sortType) => {
     // - Сортируем задачи
     // - Очищаем список
