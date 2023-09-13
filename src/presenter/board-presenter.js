@@ -7,6 +7,7 @@ import NoTaskView from '../view/no-task-view.js';
 import TaskPresenter from './task-presenter.js';
 import { updateItem } from '../utils/common.js';
 import { SortType } from '../const.js';
+import { sortTaskUp, sortTaskDown } from '../utils/task.js';
 
 const TASK_COUNT_PER_STEP = 8;
 
