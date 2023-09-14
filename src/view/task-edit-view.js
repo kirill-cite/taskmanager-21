@@ -95,7 +95,7 @@ function createTaskEditTemplate(data) {
 
   const colorsTemplate = createTaskEditColorsTemplate(color);
 
-  const isSubmitDisabled = isRepeating && !isTaskRepeating(repeating);
+  const isSubmitDisabled = (isDueDate && dueDate === null) || (isRepeating && !isTaskRepeating(repeating));
 
   return (
     /*html*/`<article class="card card--edit card--${color} ${repeatingClassName}">
