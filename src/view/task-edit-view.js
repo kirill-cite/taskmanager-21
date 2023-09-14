@@ -93,8 +93,10 @@ function createTaskEditTemplate(data) {
 
   const colorsTemplate = createTaskEditColorsTemplate(color);
 
+  const isSubmitDisabled = isRepeating && !isTaskRepeating(repeating);
+
   return (
-    `<article class="card card--edit card--${color} ${repeatingClassName}">
+    /*html*/`<article class="card card--edit card--${color} ${repeatingClassName}">
       <form class="card__form" method="get">
         <div class="card__inner">
           <div class="card__color-bar">
@@ -131,7 +133,12 @@ function createTaskEditTemplate(data) {
           </div>
 
           <div class="card__status-btns">
-            <button class="card__save" type="submit">save</button>
+            <button 
+              class="card__save" 
+              type="submit"
+              ${isSubmitDisabled ? 'disabled' : ''}>
+              save
+            </button>
             <button class="card__delete" type="button">delete</button>
           </div>
         </div>
