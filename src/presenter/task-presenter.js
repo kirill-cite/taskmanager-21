@@ -65,6 +65,7 @@ export default class TaskPresenter {
 
   resetView() {
     if (this.#mode !== Mode.DEFAULT) {
+      this.#taskEditComponent.reset(this.#task);
       this.#replaceFormToCard();
     }
   }
