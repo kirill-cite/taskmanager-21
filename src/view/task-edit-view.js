@@ -198,6 +198,8 @@ export default class TaskEditView extends AbstractStatefulView {
       this.element.querySelector('.card__repeat-days-inner')
         .addEventListener('change', this.#repeatingChangeHandler);
     }
+
+    this.#setDatepicker();
   }
 
   #colorChangeHandler = (evt) => {
